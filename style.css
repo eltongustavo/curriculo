@@ -1,146 +1,469 @@
-/* 1. RESET E CONFIGURAÇÃO BASE */
 * {
+
   margin: 0;
+
   padding: 0;
+
   box-sizing: border-box;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
+
 }
 
 :root {
+
   --primary: #111827;
+
   --secondary: #4b5563;
+
   --accent: #2563eb;
+
   --border: #e5e7eb;
+
+  --background: #f3f4f6;
+
 }
+
+
 
 body {
+
   font-family: 'Inter', sans-serif;
-  background: #f3f4f6;
+
+  background: var(--background);
+
   color: var(--primary);
-  display: flex;
-  justify-content: center;
-  padding: 40px 0;
+
+  line-height: 1.6;
+
+  padding: 32px;
+
 }
 
-/* 2. PÁGINA A4 */
+
+
 .page {
-  width: 210mm;
+
+  width: 220mm;
+
   min-height: 297mm;
+
+
+
+  margin: 0 auto;
+
   background: white;
-  padding: 15mm 20mm;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  border-radius: 8px;
+
+
+
+  padding: 20mm;
+
+
+
+  border-radius: 18px;
+
 }
 
-/* 3. CABEÇALHO (Onde estava o problema) */
+
+
 .header {
-  margin-bottom: 25px;
+
+  margin-bottom: 32px;
+
 }
+
+
 
 h1 {
+
   font-size: 2rem;
-  font-weight: 800;
+
+  font-weight: 700;
+
   line-height: 1.2;
+
 }
+
+
 
 .subtitle {
-  margin-bottom: 15px;
+
+  margin-top: 8px;
+
   color: var(--secondary);
+
   font-size: 1rem;
+
 }
 
-/* GRID DE CONTATOS: 3 colunas fixas para evitar quebra */
+
+
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr 2fr; /* Divide o espaço proporcionalmente */
-  gap: 10px;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-}
 
-/* O quarto item (Data) ocupando a linha de baixo sozinho ou alinhado */
-.contact-grid span:last-child {
-  grid-column: 1; 
-}
+  margin-top: 18px;
 
-.contact-grid span {
-  white-space: nowrap;
+
+
   display: flex;
-  align-items: center;
-  gap: 5px;
+
+  flex-wrap: wrap;
+
+  gap: 10px 20px;
+
+
+
+  font-size: 0.95rem;
+
+  color: var(--secondary);
+
 }
 
-/* GRID DE LINKS: Organizado em colunas */
+
+
 .links {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px;
-  border-top: 1px solid var(--border);
-  padding-top: 15px;
-  margin-top: 10px;
+
+  margin-top: 18px;
+
+
+
+  display: flex;
+
+  gap: 14px;
+
+  flex-wrap: wrap;
+
 }
+
+
 
 .links a {
+
   text-decoration: none;
+
   color: var(--accent);
-  font-size: 0.8rem;
-  line-height: 1.4;
-  word-break: break-all; /* Evita que o link saia da página se for muito longo */
+
+  font-weight: 500;
+
 }
 
-/* 4. SEÇÕES */
-section { margin-top: 25px; }
+
+
+.links a:hover {
+
+  text-decoration: underline;
+
+}
+
+
+
+section {
+
+  margin-top: 30px;
+
+}
+
+
 
 h2 {
-  font-size: 1.1rem;
-  border-bottom: 2px solid var(--primary);
-  padding-bottom: 5px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
+
+  font-size: 1.15rem;
+
+  margin-bottom: 16px;
+
+
+
+  padding-bottom: 8px;
+
+
+
+  border-bottom: 2px solid var(--border);
+
 }
 
-.card { margin-bottom: 15px; }
+
+
+.card {
+
+  margin-bottom: 18px;
+
+}
+
+
 
 .card-header {
+
   display: flex;
+
   justify-content: space-between;
-  font-weight: 700;
+
+  gap: 16px;
+
 }
+
+
+
+.card-header h3 {
+
+  font-size: 1rem;
+
+}
+
+
 
 .card-header span {
-  font-weight: 400;
+
   color: var(--secondary);
+
+  white-space: nowrap;
+
 }
 
-p, li {
-  font-size: 0.95rem;
-  color: var(--secondary);
-  margin-top: 5px;
+
+
+.card p {
+
+  margin-top: 8px;
+
 }
 
-ul { padding-left: 20px; }
+
+
+ul {
+
+  margin-top: 10px;
+
+  padding-left: 20px;
+
+}
+
+
 
 .project-link {
-  color: var(--accent);
+
+  display: inline-block;
+
+
+
   text-decoration: none;
+
+  color: var(--accent);
+
   font-weight: 600;
-  font-size: 0.85rem;
+
 }
 
-/* 5. IMPRESSÃO */
-@media print {
-  @page {
-    size: A4;
-    margin: 0;
+
+
+.skills {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+}
+
+
+
+.skills span {
+
+  background: #eef2ff;
+
+  color: #3730a3;
+
+
+
+  padding: 8px 12px;
+
+
+
+  border-radius: 999px;
+
+
+
+  font-size: 0.9rem;
+
+  font-weight: 500;
+
+}
+
+
+
+footer {
+
+  margin-top: 40px;
+
+  text-align: center;
+
+}
+
+
+
+button {
+
+  border: none;
+
+  background: var(--accent);
+
+  color: white;
+
+
+
+  padding: 12px 18px;
+
+
+
+  border-radius: 10px;
+
+
+
+  font-size: 0.95rem;
+
+  font-weight: 600;
+
+
+
+  cursor: pointer;
+
+
+
+  transition: 0.2s;
+
+}
+
+
+
+button:hover {
+
+  transform: translateY(-1px);
+
+  opacity: 0.92;
+
+}
+
+
+
+/* RESPONSIVO */
+
+
+
+@media (max-width: 900px) {
+
+  body {
+
+    padding: 0;
+
+    background: white;
+
   }
-  body { background: white; padding: 0; margin: 0; }
+
+
+
   .page {
-    width: 210mm;
-    height: 297mm;
-    margin: 0;
+
+    width: 100%;
+
+    min-height: auto;
+
     border-radius: 0;
+
     box-shadow: none;
-    padding: 15mm 20mm;
+
+    padding: 24px;
+
   }
+
+
+
+  .card-header {
+
+    flex-direction: column;
+
+  }
+
+}
+
+
+
+/* IMPRESSÃO / PDF */
+
+
+
+@media print {
+
+
+
+  html,
+
+  body {
+
+    width: 210mm;
+
+    height: 297mm;
+
+    background: #f3f4f6;
+
+  }
+
+
+
+  body {
+
+    margin: 0;
+
+    padding: 0;
+
+  }
+
+
+
+  .page {
+
+    width: 210mm;
+
+    min-height: 297mm;
+
+
+
+    margin: 0 auto;
+
+
+
+    background: white;
+
+
+
+    padding: 22mm;
+
+
+
+    border-radius: 18px;
+
+
+
+    box-shadow:
+
+      0 10px 25px rgba(0,0,0,0.08);
+
+  }
+
+
+
+  a {
+
+    color: var(--accent);
+
+    text-decoration: none;
+
+  }
+
+
+
+  @page {
+
+    size: A4;
+
+    margin: 0;
+
+  }
+
 }
