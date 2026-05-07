@@ -98,16 +98,13 @@ h1 {
 
 .contact-grid {
 
-  margin-top: 18px;
-  margin-botton: 18px;
+  margin: 18px;
 
   display: flex;
 
   flex-wrap: wrap;
 
   gap: 10px 20px;
-
-
 
   font-size: 0.95rem;
 
