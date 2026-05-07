@@ -3,6 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-print-color-adjust: exact; /* Força cores de fundo e bordas no PDF */
+  print-color-adjust: exact;
 }
 
 :root {
@@ -11,96 +13,92 @@
   --accent: #2563eb;
   --border: #e5e7eb;
   --background: #f3f4f6;
-  --white: #ffffff;
 }
 
-/* 2. ESTILO DO CORPO (Visualização no Navegador) */
+/* 2. ESTILO DA PÁGINA (WEB) */
 body {
   font-family: 'Inter', sans-serif;
   background: var(--background);
   color: var(--primary);
-  line-height: 1.5;
+  line-height: 1.6;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 0;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-/* 3. CONTAINER DA PÁGINA (Simulando A4) */
 .page {
-  width: 210mm;
+  width: 210mm; /* Largura A4 exata */
   min-height: 297mm;
-  background: var(--white);
-  padding: 15mm 20mm; /* Margens internas padrão de documentos */
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
+  background: white;
+  padding: 15mm 20mm;
+  border-radius: 12px; /* Visual mais moderno no navegador */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* 4. CABEÇALHO */
+/* 3. HEADER E CONTACT GRID (O segredo para não quebrar linha) */
 .header {
   margin-bottom: 25px;
 }
 
 h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
 }
 
 .subtitle {
-  margin-top: 4px;
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 0.95rem;
+  margin-top: 8px;
+  color: var(--secondary);
+  font-size: 1.1rem;
 }
 
+/* Usando Flexbox com gap controlado para garantir que caiba em uma linha */
 .contact-grid {
-  margin-top: 15px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 8px;
-  font-size: 0.85rem;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; 
+  column-gap: 24px; /* Espaço entre itens */
+  row-gap: 8px;    /* Espaço se precisar quebrar em telas pequenas */
+  font-size: 0.95rem;
   color: var(--secondary);
+  align-items: center;
+}
+
+.contact-grid span {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Impede que o ícone se separe do texto */
 }
 
 .links {
-  margin-top: 12px;
+  margin-top: 15px;
   display: flex;
   gap: 15px;
   border-top: 1px solid var(--border);
-  padding-top: 10px;
+  padding-top: 12px;
 }
 
 .links a {
   text-decoration: none;
-  color: var(--secondary);
-  font-size: 0.8rem;
-  transition: color 0.2s;
-}
-
-.links a:hover {
   color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
-/* 5. SEÇÕES E CONTEÚDO */
-section {
-  margin-top: 25px;
-}
+/* 4. SEÇÕES */
+section { margin-top: 25px; }
 
 h2 {
   font-size: 1.1rem;
-  text-transform: uppercase;
-  color: var(--primary);
-  border-bottom: 2px solid var(--primary);
-  padding-bottom: 4px;
   margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.card {
-  margin-bottom: 15px;
-}
+.card { margin-bottom: 15px; }
 
 .card-header {
   display: flex;
@@ -108,81 +106,36 @@ h2 {
   align-items: baseline;
 }
 
-.card-header h3 {
-  font-size: 1rem;
-  font-weight: 700;
-}
+.card-header h3 { font-size: 1rem; }
 
 .card-header span {
+  color: var(--secondary);
   font-size: 0.85rem;
-  color: var(--secondary);
-}
-
-p, li {
-  font-size: 0.9rem;
-  color: var(--secondary);
 }
 
 ul {
-  margin-top: 5px;
-  padding-left: 18px;
-}
-
-li {
-  margin-bottom: 4px;
+  margin-top: 8px;
+  padding-left: 20px;
 }
 
 .project-link {
-  font-size: 0.85rem;
+  display: inline-block;
+  margin-top: 4px;
   color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
-}
-
-/* 6. SKILLS (Caso queira adicionar no HTML) */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.skills span {
-  background: #f0f4ff;
-  color: #312e81;
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  /* Garante cor na impressão */
-  print-color-adjust: exact;
-  -webkit-print-color-adjust: exact;
-}
-
-/* 7. FOOTER/BOTÃO */
-footer {
-  margin-top: 20px;
-}
-
-button {
-  background: var(--primary);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
-/* 8. AJUSTES PARA IMPRESSÃO (A4 REAL) */
+/* 5. CONFIGURAÇÃO DE IMPRESSÃO (A4 REAL) */
 @media print {
   @page {
     size: A4;
-    margin: 0; /* O navegador controla as margens pelo .page */
+    margin: 0; /* Remove as margens "Header/Footer" do navegador */
   }
 
   body {
-    background: none;
+    background: white;
     padding: 0;
     margin: 0;
   }
@@ -191,39 +144,21 @@ button {
     width: 210mm;
     height: 297mm;
     margin: 0;
-    padding: 15mm 20mm;
+    padding: 20mm; /* Margem de segurança da impressora */
     border-radius: 0;
     box-shadow: none;
   }
 
-  button, footer {
-    display: none; /* Não imprime o botão */
-  }
-
-  /* Força cores de fundo e links */
-  .skills span {
-    background: #f0f4ff !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  a {
-    color: var(--accent) !important;
-    text-decoration: none;
-  }
+  .links a { color: var(--accent) !important; }
 }
 
-@media (max-width: 210mm) {
-  body {
-    padding: 0;
-  }
-  .page {
-    width: 100%;
-    height: auto;
+/* RESPONSIVO PARA CELULAR */
+@media (max-width: 900px) {
+  body { padding: 0; }
+  .page { 
+    width: 100%; 
+    border-radius: 0; 
     padding: 20px;
-    border-radius: 0;
   }
-  .card-header {
-    flex-direction: column;
-  }
+  .card-header { flex-direction: column; }
 }
