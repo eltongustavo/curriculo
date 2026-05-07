@@ -199,33 +199,41 @@ button:hover {
 
 @media print {
 
+  html,
   body {
-    background: white;
-    padding: 0;
+    width: 210mm;
+    height: 297mm;
+    background: #f3f4f6;
   }
 
-  .page {
-    width: 100%;
-    min-height: auto;
-
-    box-shadow: none;
-    border-radius: 0;
-
+  body {
     margin: 0;
     padding: 0;
   }
 
-  button {
-    display: none;
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+
+    margin: 0 auto;
+
+    background: white;
+
+    padding: 22mm;
+
+    border-radius: 18px;
+
+    box-shadow:
+      0 10px 25px rgba(0,0,0,0.08);
   }
 
   a {
-    color: inherit;
+    color: var(--accent);
     text-decoration: none;
   }
 
   @page {
     size: A4;
-    margin: 14mm;
+    margin: 0;
   }
 }
