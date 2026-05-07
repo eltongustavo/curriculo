@@ -94,22 +94,15 @@ h1 {
 
 }
 
-
-
 .contact-grid {
-
-  margin: 18px 18px 18px 0px;
-
+  margin: 18px 18px 18px 0px; 
+  /* Ordem: Cima, Direita, Baixo, Esquerda */
+  
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 10px 20px;
-
   font-size: 0.95rem;
-
   color: var(--secondary);
-
 }
 
 .links a {
