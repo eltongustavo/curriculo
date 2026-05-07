@@ -1,9 +1,9 @@
-/* 1. RESET E VARIÁVEIS */
+/* 1. RESET E CONFIGURAÇÃO BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-print-color-adjust: exact; /* Força cores de fundo e bordas no PDF */
+  -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 
@@ -12,78 +12,81 @@
   --secondary: #4b5563;
   --accent: #2563eb;
   --border: #e5e7eb;
-  --background: #f3f4f6;
 }
 
-/* 2. ESTILO DA PÁGINA (WEB) */
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--background);
+  background: #f3f4f6;
   color: var(--primary);
-  line-height: 1.6;
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 40px 0;
 }
 
+/* 2. PÁGINA A4 */
 .page {
-  width: 210mm; /* Largura A4 exata */
+  width: 210mm;
   min-height: 297mm;
   background: white;
   padding: 15mm 20mm;
-  border-radius: 12px; /* Visual mais moderno no navegador */
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
-/* 3. HEADER E CONTACT GRID (O segredo para não quebrar linha) */
+/* 3. CABEÇALHO (Onde estava o problema) */
 .header {
   margin-bottom: 25px;
 }
 
 h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .subtitle {
-  margin-top: 8px;
+  margin-bottom: 15px;
   color: var(--secondary);
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
-/* Usando Flexbox com gap controlado para garantir que caiba em uma linha */
+/* GRID DE CONTATOS: 3 colunas fixas para evitar quebra */
 .contact-grid {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap; 
-  column-gap: 24px; /* Espaço entre itens */
-  row-gap: 8px;    /* Espaço se precisar quebrar em telas pequenas */
-  font-size: 0.95rem;
-  color: var(--secondary);
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 2fr; /* Divide o espaço proporcionalmente */
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+/* O quarto item (Data) ocupando a linha de baixo sozinho ou alinhado */
+.contact-grid span:last-child {
+  grid-column: 1; 
 }
 
 .contact-grid span {
+  white-space: nowrap;
   display: flex;
   align-items: center;
-  white-space: nowrap; /* Impede que o ícone se separe do texto */
+  gap: 5px;
 }
 
+/* GRID DE LINKS: Organizado em colunas */
 .links {
-  margin-top: 15px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
   border-top: 1px solid var(--border);
-  padding-top: 12px;
+  padding-top: 15px;
+  margin-top: 10px;
 }
 
 .links a {
   text-decoration: none;
   color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  word-break: break-all; /* Evita que o link saia da página se for muito longo */
 }
 
 /* 4. SEÇÕES */
@@ -91,11 +94,10 @@ section { margin-top: 25px; }
 
 h2 {
   font-size: 1.1rem;
-  margin-bottom: 12px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 5px;
+  margin-bottom: 15px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .card { margin-bottom: 15px; }
@@ -103,62 +105,42 @@ h2 {
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  font-weight: 700;
 }
 
-.card-header h3 { font-size: 1rem; }
-
 .card-header span {
+  font-weight: 400;
   color: var(--secondary);
+}
+
+p, li {
+  font-size: 0.95rem;
+  color: var(--secondary);
+  margin-top: 5px;
+}
+
+ul { padding-left: 20px; }
+
+.project-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
   font-size: 0.85rem;
 }
 
-ul {
-  margin-top: 8px;
-  padding-left: 20px;
-}
-
-.project-link {
-  display: inline-block;
-  margin-top: 4px;
-  color: var(--accent);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-/* 5. CONFIGURAÇÃO DE IMPRESSÃO (A4 REAL) */
+/* 5. IMPRESSÃO */
 @media print {
   @page {
     size: A4;
-    margin: 0; /* Remove as margens "Header/Footer" do navegador */
-  }
-
-  body {
-    background: white;
-    padding: 0;
     margin: 0;
   }
-
+  body { background: white; padding: 0; margin: 0; }
   .page {
     width: 210mm;
     height: 297mm;
     margin: 0;
-    padding: 20mm; /* Margem de segurança da impressora */
     border-radius: 0;
     box-shadow: none;
+    padding: 15mm 20mm;
   }
-
-  .links a { color: var(--accent) !important; }
-}
-
-/* RESPONSIVO PARA CELULAR */
-@media (max-width: 900px) {
-  body { padding: 0; }
-  .page { 
-    width: 100%; 
-    border-radius: 0; 
-    padding: 20px;
-  }
-  .card-header { flex-direction: column; }
 }
