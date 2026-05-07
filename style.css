@@ -1,3 +1,4 @@
+/* 1. RESET E VARIÁVEIS */
 * {
   margin: 0;
   padding: 0;
@@ -10,227 +11,219 @@
   --accent: #2563eb;
   --border: #e5e7eb;
   --background: #f3f4f6;
+  --white: #ffffff;
 }
 
+/* 2. ESTILO DO CORPO (Visualização no Navegador) */
 body {
   font-family: 'Inter', sans-serif;
   background: var(--background);
   color: var(--primary);
-  line-height: 1.6;
-  padding: 32px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
 }
 
+/* 3. CONTAINER DA PÁGINA (Simulando A4) */
 .page {
-  width: 220mm;
+  width: 210mm;
   min-height: 297mm;
-
-  margin: 0 auto;
-  background: white;
-
-  padding: 20mm;
-
-  border-radius: 18px;
+  background: var(--white);
+  padding: 15mm 20mm; /* Margens internas padrão de documentos */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
+/* 4. CABEÇALHO */
 .header {
-  margin-bottom: 32px;
+  margin-bottom: 25px;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .subtitle {
-  margin-top: 8px;
-  color: var(--secondary);
-  font-size: 1rem;
+  margin-top: 4px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .contact-grid {
-  margin-top: 18px;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 20px;
-
-  font-size: 0.95rem;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  font-size: 0.85rem;
   color: var(--secondary);
 }
 
 .links {
-  margin-top: 18px;
-
+  margin-top: 12px;
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 15px;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
 }
 
 .links a {
   text-decoration: none;
-  color: var(--accent);
-  font-weight: 500;
+  color: var(--secondary);
+  font-size: 0.8rem;
+  transition: color 0.2s;
 }
 
 .links a:hover {
-  text-decoration: underline;
+  color: var(--accent);
 }
 
+/* 5. SEÇÕES E CONTEÚDO */
 section {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 h2 {
-  font-size: 1.15rem;
-  margin-bottom: 16px;
-
-  padding-bottom: 8px;
-
-  border-bottom: 2px solid var(--border);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 4px;
+  margin-bottom: 12px;
 }
 
 .card {
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  align-items: baseline;
 }
 
 .card-header h3 {
   font-size: 1rem;
+  font-weight: 700;
 }
 
 .card-header span {
+  font-size: 0.85rem;
   color: var(--secondary);
-  white-space: nowrap;
 }
 
-.card p {
-  margin-top: 8px;
+p, li {
+  font-size: 0.9rem;
+  color: var(--secondary);
 }
 
 ul {
-  margin-top: 10px;
-  padding-left: 20px;
+  margin-top: 5px;
+  padding-left: 18px;
+}
+
+li {
+  margin-bottom: 4px;
 }
 
 .project-link {
-  display: inline-block;
-
-  text-decoration: none;
+  font-size: 0.85rem;
   color: var(--accent);
-  font-weight: 600;
-}
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skills span {
-  background: #eef2ff;
-  color: #3730a3;
-
-  padding: 8px 12px;
-
-  border-radius: 999px;
-
-  font-size: 0.9rem;
+  text-decoration: none;
   font-weight: 500;
 }
 
+/* 6. SKILLS (Caso queira adicionar no HTML) */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.skills span {
+  background: #f0f4ff;
+  color: #312e81;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  /* Garante cor na impressão */
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* 7. FOOTER/BOTÃO */
 footer {
-  margin-top: 40px;
-  text-align: center;
+  margin-top: 20px;
 }
 
 button {
-  border: none;
-  background: var(--accent);
+  background: var(--primary);
   color: white;
-
-  padding: 12px 18px;
-
-  border-radius: 10px;
-
-  font-size: 0.95rem;
-  font-weight: 600;
-
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-
-  transition: 0.2s;
+  font-weight: 600;
 }
 
-button:hover {
-  transform: translateY(-1px);
-  opacity: 0.92;
-}
+/* 8. AJUSTES PARA IMPRESSÃO (A4 REAL) */
+@media print {
+  @page {
+    size: A4;
+    margin: 0; /* O navegador controla as margens pelo .page */
+  }
 
-/* RESPONSIVO */
-
-@media (max-width: 900px) {
   body {
+    background: none;
     padding: 0;
-    background: white;
+    margin: 0;
   }
 
   .page {
-    width: 100%;
-    min-height: auto;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 24px;
-  }
-
-  .card-header {
-    flex-direction: column;
-  }
-}
-
-/* IMPRESSÃO / PDF */
-
-@media print {
-
-  html,
-  body {
     width: 210mm;
     height: 297mm;
-    background: #f3f4f6;
-  }
-
-  body {
     margin: 0;
-    padding: 0;
+    padding: 15mm 20mm;
+    border-radius: 0;
+    box-shadow: none;
   }
 
-  .page {
-    width: 210mm;
-    min-height: 297mm;
+  button, footer {
+    display: none; /* Não imprime o botão */
+  }
 
-    margin: 0 auto;
-
-    background: white;
-
-    padding: 22mm;
-
-    border-radius: 18px;
-
-    box-shadow:
-      0 10px 25px rgba(0,0,0,0.08);
+  /* Força cores de fundo e links */
+  .skills span {
+    background: #f0f4ff !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   a {
-    color: var(--accent);
+    color: var(--accent) !important;
     text-decoration: none;
   }
+}
 
-  @page {
-    size: A4;
-    margin: 0;
+@media (max-width: 210mm) {
+  body {
+    padding: 0;
+  }
+  .page {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-radius: 0;
+  }
+  .card-header {
+    flex-direction: column;
   }
 }
