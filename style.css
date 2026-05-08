@@ -21,14 +21,15 @@ body {
   padding: 32px;
 }
 
-/* --- Container Principal (A4) --- */
+/* --- Container Principal --- */
 .page {
   width: 210mm;
   min-height: 297mm;
   margin: 0 auto;
   background: white;
+  /* Padding para visualização no navegador */
   padding: 20mm;
-  /* Removido box-shadow e border-radius para um PDF limpo */
+  box-shadow: none;
   border-radius: 4px; 
 }
 
@@ -78,14 +79,12 @@ h2 {
   border-bottom: 2px solid var(--border);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  /* Impede que o título fique sozinho no fim da página */
   break-after: avoid;
 }
 
-/* --- Cards (Onde a mágica da quebra de página acontece) --- */
+/* --- Cards (Prevenção de quebra de bloco) --- */
 .card {
   margin-bottom: 18px;
-  /* FORÇA O BLOCO A NÃO SER CORTADO NO MEIO ENTRE PÁGINAS */
   break-inside: avoid;
   page-break-inside: avoid;
   display: block;
@@ -94,7 +93,7 @@ h2 {
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline; /* Alinha o texto por baixo */
+  align-items: baseline;
   gap: 15px;
 }
 
@@ -107,7 +106,7 @@ h2 {
 .card-header span {
   color: var(--secondary);
   font-size: 0.9rem;
-  white-space: nowrap; /* Impede a data de quebrar linha */
+  white-space: nowrap;
 }
 
 .card p {
@@ -138,29 +137,27 @@ li {
   text-decoration: underline;
 }
 
-/* --- Ajustes para Visualização em Tela (Celular/Monitor) --- */
+/* --- Ajustes para Tela (Mobile) --- */
 @media (max-width: 900px) {
   body {
     padding: 10px;
     background: #fff;
   }
-
   .page {
     width: 100%;
     padding: 20px;
-    border: none;
   }
-
   .card-header {
-    flex-direction: row; /* Mantém data ao lado mesmo no mobile */
+    flex-direction: row;
   }
 }
 
-/* --- AJUSTES EXCLUSIVOS PARA IMPRESSÃO (CONTROL + P) --- */
+/* --- AJUSTES PARA IMPRESSÃO (CONTROL + P) --- */
 @media print {
   @page {
     size: A4;
-    margin: 0; /* O navegador controla as margens físicas */
+    /* Aqui definimos a margem que será repetida em TODAS as folhas */
+    margin: 20mm; 
   }
 
   body {
@@ -170,18 +167,25 @@ li {
   }
 
   .page {
-    width: 210mm;
-    min-height: 297mm;
-    margin: 0;
-    padding: 20mm; /* Margem interna do texto no papel */
+    width: 100%;
+    min-height: initial;
+    margin: 0 !important;
+
+    padding: 0 !important; 
     border: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
   }
 
-  /* Garante que cores de links e acentos saiam no PDF */
+  /* Garante cores e evita quebras de página feias */
   .project-link, h2 {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+
+  /* Remove qualquer sobra visual de box-shadow que o navegador possa tentar renderizar */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 }
