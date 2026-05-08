@@ -1,440 +1,173 @@
 * {
-
   margin: 0;
-
   padding: 0;
-
   box-sizing: border-box;
-
 }
 
 :root {
-
   --primary: #111827;
-
   --secondary: #4b5563;
-
   --accent: #2563eb;
-
   --border: #e5e7eb;
-
   --background: #f3f4f6;
-
 }
-
-
 
 body {
-
   font-family: 'Inter', sans-serif;
-
   background: var(--background);
-
   color: var(--primary);
-
   line-height: 1.6;
-
   padding: 32px;
-
 }
 
-
-
+/* --- Content Wrapper --- */
 .page {
-
-  width: 220mm;
-
+  width: 210mm; /* Largura padrão A4 */
   min-height: 297mm;
-
-
-
   margin: 0 auto;
-
   background: white;
-
-
-
   padding: 20mm;
-
-
-
-  border-radius: 18px;
-
+  border-radius: 12px;
+  /* Removido box-shadow para evitar marcas no PDF */
 }
 
-
-
+/* --- Header & Contact --- */
 .header {
-
   margin-bottom: 32px;
-
 }
-
-
 
 h1 {
-
-  font-size: 2rem;
-
+  font-size: 1.8rem;
   font-weight: 700;
-
   line-height: 1.2;
-
 }
 
-
-
 .subtitle {
-
   margin-top: 8px;
-
   color: var(--secondary);
-
   font-size: 1rem;
-
 }
 
 .contact-grid {
-  margin: 18px 18px 18px 0px; 
-  /* Ordem: Cima, Direita, Baixo, Esquerda */
-  
+  margin: 18px 0;
   display: flex;
   flex-wrap: wrap;
   gap: 10px 20px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--secondary);
 }
 
-.links a {
-
-  text-decoration: none;
-
-  color: var(--accent);
-
-  font-weight: 500;
-
+.links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-
-
-.links a:hover {
-
-  text-decoration: underline;
-
-}
-
-
-
+/* --- Sections --- */
 section {
-
-  margin-top: 30px;
-
+  margin-top: 25px;
 }
-
-
 
 h2 {
-
-  font-size: 1.15rem;
-
-  margin-bottom: 16px;
-
-
-
-  padding-bottom: 8px;
-
-
-
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
   border-bottom: 2px solid var(--border);
-
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
-
-
 
 .card {
-
-  margin-bottom: 18px;
-
+  margin-bottom: 16px;
 }
-
-
 
 .card-header {
-
   display: flex;
-
   justify-content: space-between;
-
-  gap: 16px;
-
+  align-items: baseline;
+  gap: 10px;
 }
-
-
 
 .card-header h3 {
-
   font-size: 1rem;
-
+  flex: 1;
 }
-
-
 
 .card-header span {
-
   color: var(--secondary);
-
+  font-size: 0.9rem;
   white-space: nowrap;
-
 }
-
-
 
 .card p {
-
-  margin-top: 8px;
-
+  margin-top: 4px;
+  font-size: 0.95rem;
 }
-
-
 
 ul {
-
-  margin-top: 10px;
-
-  padding-left: 20px;
-
+  margin-top: 8px;
+  padding-left: 18px;
 }
 
-
+li {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
 
 .project-link {
-
-  display: inline-block;
-
-
-
   text-decoration: none;
-
   color: var(--accent);
-
-  font-weight: 600;
-
-}
-
-
-
-.skills {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 10px;
-
-}
-
-
-
-.skills span {
-
-  background: #eef2ff;
-
-  color: #3730a3;
-
-
-
-  padding: 8px 12px;
-
-
-
-  border-radius: 999px;
-
-
-
-  font-size: 0.9rem;
-
   font-weight: 500;
-
+  font-size: 0.9rem;
 }
 
-
-
-footer {
-
-  margin-top: 40px;
-
-  text-align: center;
-
+.project-link:hover {
+  text-decoration: underline;
 }
 
-
-
-button {
-
-  border: none;
-
-  background: var(--accent);
-
-  color: white;
-
-
-
-  padding: 12px 18px;
-
-
-
-  border-radius: 10px;
-
-
-
-  font-size: 0.95rem;
-
-  font-weight: 600;
-
-
-
-  cursor: pointer;
-
-
-
-  transition: 0.2s;
-
-}
-
-
-
-button:hover {
-
-  transform: translateY(-1px);
-
-  opacity: 0.92;
-
-}
-
-
-
-/* RESPONSIVO */
-
-
-
+/* --- Mobile Responsiveness --- */
 @media (max-width: 900px) {
-
   body {
-
     padding: 0;
-
     background: white;
-
   }
-
-
 
   .page {
-
     width: 100%;
-
     min-height: auto;
-
     border-radius: 0;
-
-    box-shadow: none;
-
     padding: 24px;
-
   }
-
-
 
   .card-header {
-
-    flex-direction: column;
-
+    flex-direction: row; /* Mantém data ao lado no celular também */
   }
-
 }
 
-
-
-/* IMPRESSÃO / PDF */
-
-
-
+/* --- PRINT / PDF SETTINGS --- */
 @media print {
-
-
-
-  html,
-
-  body {
-
-    width: 210mm;
-
-    height: 297mm;
-
-    background: #f3f4f6;
-
-  }
-
-
-
-  body {
-
+  @page {
+    size: A4;
     margin: 0;
-
-    padding: 0;
-
   }
 
-
+  body {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 
   .page {
-
     width: 210mm;
-
-    min-height: 297mm;
-
-
-
-    margin: 0 auto;
-
-
-
-    background: white;
-
-
-
-    padding: 22mm;
-
-
-
-    border-radius: 18px;
-
-
-
-    box-shadow:
-
-      0 10px 25px rgba(0,0,0,0.08);
-
-  }
-
-
-
-  a {
-
-    color: var(--accent);
-
-    text-decoration: none;
-
-  }
-
-
-
-  @page {
-
-    size: A4;
-
+    height: 297mm;
+    padding: 20mm;
     margin: 0;
-
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 
+  .project-link {
+    color: var(--accent) !important;
+  }
 }
