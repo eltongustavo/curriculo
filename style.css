@@ -27,8 +27,7 @@ body {
   min-height: 297mm;
   margin: 0 auto;
   background: white;
-  /* Padding para visualização no navegador */
-  padding: 20mm;
+  padding: 20mm; /* Padding para visualização no navegador */
   box-shadow: none;
   border-radius: 4px; 
 }
@@ -79,13 +78,23 @@ h2 {
   border-bottom: 2px solid var(--border);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  break-after: avoid;
+  break-after: avoid; /* Evita título sozinho no fim da folha */
 }
 
-/* --- Cards (Prevenção de quebra de bloco) --- */
+/* --- FORMATAÇÃO DOS PARÁGRAFOS (<p>) --- */
+p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #374151; /* Cinza grafite para melhor legibilidade */
+  line-height: 1.6; /* Respiro entre linhas */
+  text-align: justify; /* Alinhamento profissional dos dois lados */
+  hyphens: auto; /* Evita espaços excessivos entre palavras */
+}
+
+/* --- Cards (Blocos de Experiência/Formação) --- */
 .card {
   margin-bottom: 18px;
-  break-inside: avoid;
+  break-inside: avoid; /* Impede que o card seja cortado entre páginas */
   page-break-inside: avoid;
   display: block;
 }
@@ -109,21 +118,17 @@ h2 {
   white-space: nowrap;
 }
 
-.card p {
-  margin-top: 4px;
-  font-size: 0.95rem;
-}
-
 /* --- Listas e Links --- */
 ul {
-  margin-top: 6px;
+  margin-top: 8px;
   padding-left: 18px;
 }
 
 li {
   font-size: 0.9rem;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   color: #374151;
+  text-align: justify; /* Mantém listas alinhadas também */
 }
 
 .project-link {
@@ -131,6 +136,9 @@ li {
   color: var(--accent);
   font-weight: 600;
   font-size: 0.85rem;
+  display: inline-block;
+  margin-top: 4px;
+  text-align: left; /* Garante que links não fiquem justificados */
 }
 
 .project-link:hover {
@@ -152,12 +160,11 @@ li {
   }
 }
 
-/* --- AJUSTES PARA IMPRESSÃO (CONTROL + P) --- */
+/* --- AJUSTES FINAIS PARA IMPRESSÃO (PDF) --- */
 @media print {
   @page {
     size: A4;
-    /* Aqui definimos a margem que será repetida em TODAS as folhas */
-    margin: 20mm; 
+    margin: 20mm; /* Margem fixa para folha 1, 2, etc. */
   }
 
   body {
@@ -170,20 +177,19 @@ li {
     width: 100%;
     min-height: initial;
     margin: 0 !important;
-
-    padding: 0 !important; 
+    padding: 0 !important; /* Margem controlada pelo @page */
     border: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
   }
 
-  /* Garante cores e evita quebras de página feias */
-  .project-link, h2 {
+  /* Garante cores e evita quebras de página */
+  .project-link, h2, h1 {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* Remove qualquer sobra visual de box-shadow que o navegador possa tentar renderizar */
+  /* Remove sombras fantasmas */
   * {
     box-shadow: none !important;
     text-shadow: none !important;
